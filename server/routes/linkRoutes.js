@@ -1,0 +1,11 @@
+import express from "express";
+import { protect } from "../middleware/auth.js";
+import { createLink, myLinks, deleteLink, qrcode, visits, publicRedirect } from "../controllers/linkController.js";
+const router = express.Router();
+router.get("/mine", protect, myLinks);
+router.post("/", protect, createLink);
+router.delete("/:id", protect, deleteLink);
+router.get("/:id/qrcode", protect, qrcode);
+router.get("/:id/visits", protect, visits);
+router.get("/public/redirect/:slug", publicRedirect);
+export default router;
