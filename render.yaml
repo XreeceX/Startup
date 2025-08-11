@@ -1,24 +1,25 @@
 specVersion: "1"
 services:
-
-  type: web
-  name: smartlinks
-  env: node
-  rootDir: server
-  plan: free
-  buildCommand: "npm install && cd ../client && npm install --include=dev && npm run build && cd ../server"
-  startCommand: "node server.js"
-  envVars:
-  key: NODE_ENV
-    key: NODE_VERSION
-    value: "20"
-    key: MONGO_URI
-    sync: false
-    key: JWT_SECRET
-    sync: false
-    key: STRIPE_SECRET_KEY
-    sync: false
-    key: STRIPE_PRICE_ID
-    sync: false
-    key: CLIENT_URL
-    value: https://smartlinx.onrender.com
+  
+  -type: web
+  -name: smartlinks
+  -env: node
+  -rootDir: server
+  -plan: free
+  -buildCommand: "npm install && cd ../client && npm install --include=dev && npm run build && cd ../server"
+  -startCommand: "node server.js"
+  -envVars:
+    -key: NODE_ENV
+    -value: production
+    -key: NODE_VERSION
+    -value: "20"
+    -key: MONGO_URI
+    -sync: false
+    -key: JWT_SECRET
+    -sync: false
+    -key: STRIPE_SECRET_KEY
+    -sync: false
+    -key: STRIPE_PRICE_ID
+    -sync: false
+    -key: CLIENT_URL
+    -value: https://smartlinx.onrender.com
