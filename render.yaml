@@ -1,3 +1,4 @@
+specVersion: "1"
 services:
 
   type: web
@@ -5,15 +6,10 @@ services:
   env: node
   rootDir: server
   plan: free
-  buildCommand: |
-  npm install
-  cd ../client
-  npm install --include=dev
-  npm run build
-  cd ../server
-  startCommand: node server.js
+  buildCommand: "npm install && cd ../client && npm install --include=dev && npm run build && cd ../server"
+  startCommand: "node server.js"
   envVars:
-    key: NODE_ENV
+  key: NODE_ENV
     value: production
     key: NODE_VERSION
     value: "20"
@@ -26,4 +22,4 @@ services:
     key: STRIPE_PRICE_ID
     sync: false
     key: CLIENT_URL
-    value: https://smartlinks.onrender.com
+    value: https://smartlinx.onrender.com
