@@ -6,18 +6,17 @@ env: node
 rootDir: server
 plan: free
 buildCommand: |
-npm install && cd ../client && npm install --include=dev && npm run build && cd ../server
+npm install
+cd ../client
+npm install --include=dev
+npm run build
+cd ../server
 startCommand: node server.js
 envVars:
 key: NODE_ENV
 value: production
 key: NODE_VERSION
-value: 20
-key: CLIENT_URL
-fromService:
-type: web
-name: smartlinks
-envVarKey: RENDER_EXTERNAL_URL
+value: "20"
 key: MONGO_URI
 sync: false
 key: JWT_SECRET
@@ -26,3 +25,5 @@ key: STRIPE_SECRET_KEY
 sync: false
 key: STRIPE_PRICE_ID
 sync: false
+key: CLIENT_URL
+value: https://smartlinks.onrender.com
