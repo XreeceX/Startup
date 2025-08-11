@@ -30,17 +30,17 @@ app.use("/api/links", linkRoutes);
 app.use("/api/profile", profileRoutes);
 app.use("/api/payments", paymentRoutes);
 
-// Public redirect
+// short url redirect
 app.get("/r/:slug", publicRedirect);
 
-// Serve client build
+// serve client build
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const clientDist = path.join(__dirname, "..", "client", "dist");
 if (fs.existsSync(clientDist)) {
-app.use(express.static(clientDist));
-app.get("*", (req, res) => res.sendFile(path.join(clientDist, "index.html")));
+  app.use(express.static(clientDist));
+  app.get("*", (req, res) => res.sendFile(path.join(clientDist, "index.html")));
 }
 
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(Server running on :${PORT}));
+app.listen(PORT, () => console.log(`Server running on :${PORT}`));
