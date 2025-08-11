@@ -102,3 +102,19 @@ await link.save();
 
 return res.redirect(302, link.url);
 });
+
+Commit these to master.
+
+B) Prove in the build logs Render is using your fixed files
+Temporarily add debug echos to render.yaml so the build prints the exact file contents before building. In render.yaml, change buildCommand to:
+
+buildCommand: |
+echo "---- DASHBOARD.JSX (head) ----"
+sed -n '1,60p' ../client/src/pages/Dashboard.jsx
+echo "---- LINK CONTROLLER (head) ----"
+sed -n '1,80p' controllers/linkController.js
+npm install
+cd ../client
+npm install --include=dev
+npm run build
+cd ../server
