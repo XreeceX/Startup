@@ -1,16 +1,15 @@
-specVersion: "1"
 services:
   
-  type: web
-  name: smartlinks
-  env: node
-  rootDir: server
-  plan: free
-  autoDeploy: true
-  healthCheckPath: /api/health
-  buildCommand: "npm install && cd ../client && npm install --include=dev && npm run build && cd ../server"
-  startCommand: "node server.js"
-  envVars:
+  - type: web
+  - name: smartlinks
+  - env: node
+  - rootDir: server
+  - plan: free
+  - autoDeploy: true
+  - healthCheckPath: /api/health
+  - buildCommand: "npm install && cd ../client && npm install --include=dev && npm run build && cd ../server"
+  - startCommand: "node server.js"
+  - envVars:
     - key: NODE_ENV
     - value: production
     - key: NODE_VERSION
